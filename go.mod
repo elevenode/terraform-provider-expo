@@ -1,4 +1,4 @@
-module github.com/fintreal/expo-eas-sdk-go
+module github.com/fintreal/eas-sdk-go
 
 go 1.24.1
 

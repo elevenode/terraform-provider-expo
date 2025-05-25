@@ -1,0 +1,43 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unit-test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+  
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.1'
+  
+      - name: Run tests
+        run: go test ./internal/... -count=1 -cover
+  
+  integration-test:
+    name: Integration Test
+    runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      IMMUTABLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.IMMUTABLE_PROVISIONING_PROFILE_BASE64 }}
+      FCM_KEY: ${{ secrets.FCM_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.1'
+      
+      - name: Run tests
+        run: go test ./test -count=1 -cover
