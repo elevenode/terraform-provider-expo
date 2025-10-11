@@ -22,7 +22,7 @@ func TestAppEnvironmentVariableGet(t *testing.T) {
 		Name:         "TEST_ENVIRONMENT_VARIABLE",
 		Value:        "VALUE",
 		Visibility:   "PUBLIC",
-		Environments: []string{"PREVIEW"},
+		Environments: []string{"preview"},
 	}
 
 	assert.Equal(t, expectedData, actualData)
@@ -42,7 +42,7 @@ func TestAppEnvironmentVariableGetByName(t *testing.T) {
 		Name:         input.Name,
 		Value:        "VALUE",
 		Visibility:   "PUBLIC",
-		Environments: []string{"PREVIEW"},
+		Environments: []string{"preview"},
 	}
 
 	assert.Equal(t, expectedData, actualData)
@@ -55,7 +55,7 @@ func TestAppEnvironmentVariableUpdate(t *testing.T) {
 		Name:         utils.GenerateRandomString(10),
 		Value:        utils.GenerateRandomString(10),
 		Visibility:   "PUBLIC",
-		Environments: []string{"PRODUCTION"},
+		Environments: []string{"production"},
 	}
 
 	actualData, actualErr := utils.Client.AppVariable.Update(updateData)
@@ -74,7 +74,7 @@ func TestAppEnvironmentVariableCreateAndDelete(t *testing.T) {
 		Name:         utils.GenerateRandomString(10),
 		Value:        utils.GenerateRandomString(10),
 		Visibility:   "PUBLIC",
-		Environments: []string{"DEVELOPMENT", "PREVIEW"},
+		Environments: []string{"development", "preview"},
 	}
 
 	actualData, actualErr := utils.Client.AppVariable.Create(inputData)
