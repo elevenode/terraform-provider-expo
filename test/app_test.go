@@ -44,9 +44,12 @@ func TestAppCreate(t *testing.T) {
 	// Create
 	expectedData, actualErr := utils.Client.App.Create(inputData)
 
-	assert.Equal(t, inputData.Name, expectedData.Name)
-	assert.Equal(t, inputData.Slug, expectedData.Slug)
 	assert.Equal(t, nil, actualErr)
+	assert.NotNil(t, expectedData)
+	if expectedData != nil {
+		assert.Equal(t, inputData.Name, expectedData.Name)
+		assert.Equal(t, inputData.Slug, expectedData.Slug)
+	}
 }
 
 func TestAppUpdate(t *testing.T) {
