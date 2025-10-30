@@ -13,7 +13,7 @@ var expectedData = &Data{
 	Name:         "test-name",
 	Value:        "test-value",
 	Visibility:   "PUBLIC",
-	Environments: []string{"DEVELOPMENT"},
+	Environments: []string{"development"},
 }
 
 var mockResponse = getResponse{AppByAppId: appById{Data: []Data{*expectedData}}}

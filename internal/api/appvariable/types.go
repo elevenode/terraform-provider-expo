@@ -10,7 +10,7 @@ type Data struct {
 	Value string `json:"value"`
 	// PUBLIC, SENSITIVE, SECRET
 	Visibility string `json:"visibility"`
-	// DEVELOPMENT, PREVIEW, PRODUCTION
+	// development, preview, production
 	Environments []string `json:"environments"`
 }
 

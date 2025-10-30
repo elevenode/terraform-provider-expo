@@ -13,7 +13,7 @@ func TestCreate(t *testing.T) {
 		Name:         "test-name",
 		Value:        "test-value",
 		Visibility:   "PUBLIC",
-		Environments: []string{"PREVIEW", "PRODUCTION"},
+		Environments: []string{"preview", "production"},
 	}
 
 	expectedVariables := map[string]any{
