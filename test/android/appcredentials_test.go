@@ -15,7 +15,7 @@ func TestGetAppCredentials(t *testing.T) {
 	}
 	actualData, actualErr := utils.Client.Android.AppCredentials.Get(input)
 
-	fcmKeyId := "e92407f1-0d91-4586-8b0f-34ca71faa222"
+	fcmKeyId := "c5986341-d263-4b1b-a1db-56f0b7d766fa"
 
 	expectedData := &eas.AndroidAppCredentialsData{
 		Id:                        input.Id,
@@ -31,9 +31,8 @@ func TestGetAppCredentials(t *testing.T) {
 			KeystoreId:       utils.ImmutableKeystoreId,
 		}},
 	}
-
+	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedData, actualData)
-	assert.Equal(t, nil, actualErr)
 }
 
 func TestCreateAndDeleteAppCredentials(t *testing.T) {

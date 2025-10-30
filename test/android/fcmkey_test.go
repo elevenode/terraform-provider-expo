@@ -16,6 +16,6 @@ func TestCreateAppFCMKey(t *testing.T) {
 	}
 
 	actualData, actualErr := utils.Client.Android.FCMKey.Create(input)
-	assert.Equal(t, input.KeyJson, actualData.KeyJson)
-	assert.Equal(t, nil, actualErr)
+	assert.JSONEq(t, input.KeyJson, actualData.KeyJson)
+	assert.NoError(t, actualErr)
 }

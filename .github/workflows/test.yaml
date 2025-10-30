@@ -33,6 +33,7 @@ jobs:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       IMMUTABLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.IMMUTABLE_PROVISIONING_PROFILE_BASE64 }}
       FCM_KEY: ${{ secrets.FCM_KEY }}
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,4 +44,4 @@ jobs:
           go-version: '1.24.1'
       
       - name: Run tests
-        run: go test ./test -count=1 -cover
+        run: go test ./test/... -count=1 -cover
