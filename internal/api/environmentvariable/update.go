@@ -14,11 +14,9 @@ const updateQuery = `
 			updateEnvironmentVariable(
 				environmentVariableData: { environments: $environments, id: $id, name: $name, value: $value, visibility: $visibility }
 			) {
-				createdAt
 				environments
 				id
 				name
-				updatedAt
 				value
 				visibility
 			}
