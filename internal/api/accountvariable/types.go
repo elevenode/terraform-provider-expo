@@ -1,4 +1,4 @@
-package appvariable
+package accountvariable
 
 import (
 	"github.com/fintreal/eas-sdk-go/internal/api/environmentvariable"
@@ -8,18 +8,13 @@ import (
 type Data = environmentvariable.Data
 type UpdateData = environmentvariable.UpdateData
 
-type GetByNameData struct {
-	Name  string
-	AppId string
-}
-
 type GetData struct {
-	Id    string
-	AppId string
+	Id        string
+	AccountId string
 }
 
 type CreateData struct {
-	AppId        string
+	AccountId    string
 	Name         string
 	Value        string
 	Visibility   string
@@ -28,7 +23,6 @@ type CreateData struct {
 
 type Service interface {
 	Get(GetData) (*Data, error)
-	GetByName(GetByNameData) (*Data, error)
 	Create(CreateData) (*Data, error)
 	Update(UpdateData) (*Data, error)
 	Delete(string) (*any, error)

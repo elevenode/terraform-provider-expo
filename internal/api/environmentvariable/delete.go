@@ -1,4 +1,4 @@
-package appvariable
+package environmentvariable
 
 const deleteQuery = `
 	mutation ($id: ID!) {
@@ -9,8 +9,8 @@ const deleteQuery = `
 		}
 	}`
 
-// Deletes an App Environment Variable from EAS
-func (service *service) Delete(id string) (*any, error) {
+// Delete removes an environment variable from EAS
+func (service *baseService) Delete(id string) (*any, error) {
 	variables := map[string]any{"id": id}
 
 	var response any

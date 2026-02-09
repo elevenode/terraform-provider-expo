@@ -1,11 +1,11 @@
-package appvariable
+package environmentvariable
 
 type updateEnvironmentVariable struct {
 	Data *Data `json:"updateEnvironmentVariable"`
 }
 
 type updateResponse struct {
-	UpdateAppVariable updateEnvironmentVariable `json:"environmentVariable"`
+	EnvironmentVariable updateEnvironmentVariable `json:"environmentVariable"`
 }
 
 const updateQuery = `
@@ -14,17 +14,18 @@ const updateQuery = `
 			updateEnvironmentVariable(
 				environmentVariableData: { environments: $environments, id: $id, name: $name, value: $value, visibility: $visibility }
 			) {
+				createdAt
 				environments
 				id
 				name
+				updatedAt
 				value
 				visibility
 			}
 		}
 	}`
 
-// Updates an App Environment Variable in EAS
-func (service *service) Update(data UpdateData) (*Data, error) {
+func (service *baseService) Update(data UpdateData) (*Data, error) {
 	variables := map[string]any{
 		"id":           data.Id,
 		"name":         data.Name,
@@ -40,5 +41,5 @@ func (service *service) Update(data UpdateData) (*Data, error) {
 		return nil, err
 	}
 
-	return response.UpdateAppVariable.Data, err
+	return response.EnvironmentVariable.Data, err
 }

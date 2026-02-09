@@ -2,6 +2,7 @@ package eas
 
 import (
 	"github.com/fintreal/eas-sdk-go/internal/api/account"
+	"github.com/fintreal/eas-sdk-go/internal/api/accountvariable"
 	androidappbuildcredentials "github.com/fintreal/eas-sdk-go/internal/api/android/appbuildcredentials"
 	androidappcredentials "github.com/fintreal/eas-sdk-go/internal/api/android/appcredentials"
 	"github.com/fintreal/eas-sdk-go/internal/api/android/fcmkey"
@@ -17,11 +18,15 @@ import (
 	"github.com/fintreal/eas-sdk-go/internal/api/apple/pushkey"
 	"github.com/fintreal/eas-sdk-go/internal/api/apple/team"
 	"github.com/fintreal/eas-sdk-go/internal/api/appvariable"
+	"github.com/fintreal/eas-sdk-go/internal/api/environmentvariable"
 	"github.com/fintreal/eas-sdk-go/internal/api/me"
 )
 
 type MeData = me.Data
 type AccountData = account.Data
+
+type EnvironmentVariableData = environmentvariable.Data
+type UpdateEnvironmentVariableData = environmentvariable.UpdateData
 
 type AppData = app.Data
 type CreateAppData = app.CreateData
@@ -32,6 +37,11 @@ type CreateAppVariableData = appvariable.CreateData
 type UpdateAppVariableData = appvariable.UpdateData
 type GetAppVariableData = appvariable.GetData
 type GetByNameAppVariableData = appvariable.GetByNameData
+
+type AccountVariableData = accountvariable.Data
+type CreateAccountVariableData = accountvariable.CreateData
+type UpdateAccountVariableData = accountvariable.UpdateData
+type GetAccountVariableData = accountvariable.GetData
 
 type AppleTeamData = team.Data
 type CreateAppleTeamData = team.CreateData
