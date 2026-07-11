@@ -3,7 +3,7 @@ package account
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/utils"
+	"terraform-provider-eas/internal/eas/internal/utils"
 )
 
 func TestGetByName(t *testing.T) {

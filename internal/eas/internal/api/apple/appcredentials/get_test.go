@@ -3,8 +3,8 @@ package appcredentials
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/appbuildcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/utils"
+	"terraform-provider-eas/internal/eas/internal/api/apple/appbuildcredentials"
+	"terraform-provider-eas/internal/eas/internal/utils"
 )
 
 func TestGetByIdentifier(t *testing.T) {

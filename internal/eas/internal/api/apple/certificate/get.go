@@ -1,6 +1,6 @@
 package certificate
 
-import "github.com/fintreal/eas-sdk-go/internal/utils"
+import "terraform-provider-eas/internal/eas/internal/utils"
 
 type getResponse struct {
 	Data []Data `json:"appleDistributionCertificates"`

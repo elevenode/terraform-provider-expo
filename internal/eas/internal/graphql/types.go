@@ -1,8 +1,8 @@
 package graphql
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/graphql/machinebox"
 	"github.com/machinebox/graphql"
+	"terraform-provider-eas/internal/eas/internal/graphql/machinebox"
 )
 
 type VariableValue interface {

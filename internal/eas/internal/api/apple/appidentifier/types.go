@@ -1,6 +1,6 @@
 package appidentifier
 
-import "github.com/fintreal/eas-sdk-go/internal/graphql"
+import "terraform-provider-eas/internal/eas/internal/graphql"
 
 type Data struct {
 	Id         string `json:"id"`

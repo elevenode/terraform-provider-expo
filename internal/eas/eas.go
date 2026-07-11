@@ -1,14 +1,14 @@
 package eas
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/api/account"
-	"github.com/fintreal/eas-sdk-go/internal/api/accountvariable"
-	"github.com/fintreal/eas-sdk-go/internal/api/android"
-	"github.com/fintreal/eas-sdk-go/internal/api/app"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple"
-	"github.com/fintreal/eas-sdk-go/internal/api/appvariable"
-	"github.com/fintreal/eas-sdk-go/internal/api/me"
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
+	"terraform-provider-eas/internal/eas/internal/api/account"
+	"terraform-provider-eas/internal/eas/internal/api/accountvariable"
+	"terraform-provider-eas/internal/eas/internal/api/android"
+	"terraform-provider-eas/internal/eas/internal/api/app"
+	"terraform-provider-eas/internal/eas/internal/api/apple"
+	"terraform-provider-eas/internal/eas/internal/api/appvariable"
+	"terraform-provider-eas/internal/eas/internal/api/me"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 // EASClient capable of interacting with Expo EAS GraphQL API

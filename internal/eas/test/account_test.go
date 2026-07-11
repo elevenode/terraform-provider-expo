@@ -3,9 +3,9 @@ package test
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/api/account"
-	"github.com/fintreal/eas-sdk-go/test/utils"
 	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas/internal/api/account"
+	"terraform-provider-eas/internal/eas/test/utils"
 )
 
 func TestGetAccountByName(t *testing.T) {

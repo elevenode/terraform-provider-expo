@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"os"
 
-	"github.com/fintreal/eas-sdk-go/eas"
+	"terraform-provider-eas/internal/eas"
 )
 
 var Token = os.Getenv("EXPO_TOKEN")

@@ -3,8 +3,8 @@ package team
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
 	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 func TestGetByIdentifier(t *testing.T) {

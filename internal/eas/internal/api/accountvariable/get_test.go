@@ -3,7 +3,7 @@ package accountvariable
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/utils"
+	"terraform-provider-eas/internal/eas/internal/utils"
 )
 
 var expectedAccountId = "test-account-id"

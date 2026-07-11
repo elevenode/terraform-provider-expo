@@ -1,6 +1,6 @@
 package googleserviceaccountkey
 
-import "github.com/fintreal/eas-sdk-go/internal/graphql"
+import "terraform-provider-eas/internal/eas/internal/graphql"
 
 type GetByProjectIdentifierData struct {
 	ProjectIdentifier string

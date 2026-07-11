@@ -1,12 +1,12 @@
 package android
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/api/android/appbuildcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/api/android/appcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/api/android/fcmkey"
-	"github.com/fintreal/eas-sdk-go/internal/api/android/googleserviceaccountkey"
-	"github.com/fintreal/eas-sdk-go/internal/api/android/keystore"
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
+	"terraform-provider-eas/internal/eas/internal/api/android/appbuildcredentials"
+	"terraform-provider-eas/internal/eas/internal/api/android/appcredentials"
+	"terraform-provider-eas/internal/eas/internal/api/android/fcmkey"
+	"terraform-provider-eas/internal/eas/internal/api/android/googleserviceaccountkey"
+	"terraform-provider-eas/internal/eas/internal/api/android/keystore"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 type Service struct {

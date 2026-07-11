@@ -3,7 +3,7 @@ package appidentifier
 import (
 	"fmt"
 
-	"github.com/fintreal/eas-sdk-go/internal/utils"
+	"terraform-provider-eas/internal/eas/internal/utils"
 )
 
 type getResponse struct {

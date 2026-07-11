@@ -1,8 +1,8 @@
 package appvariable
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/api/environmentvariable"
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
+	"terraform-provider-eas/internal/eas/internal/api/environmentvariable"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 type Data = environmentvariable.Data

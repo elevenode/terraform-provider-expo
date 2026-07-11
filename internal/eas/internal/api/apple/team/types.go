@@ -1,6 +1,6 @@
 package team
 
-import "github.com/fintreal/eas-sdk-go/internal/graphql"
+import "terraform-provider-eas/internal/eas/internal/graphql"
 
 type account struct {
 	Id string `json:"id"`

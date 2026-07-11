@@ -1,6 +1,6 @@
 package appcredentials
 
-import "github.com/fintreal/eas-sdk-go/internal/api/apple/appbuildcredentials"
+import "terraform-provider-eas/internal/eas/internal/api/apple/appbuildcredentials"
 
 func mapData(data data) Data {
 	buildCredentials := []appbuildcredentials.Data{}

@@ -3,9 +3,9 @@ package test
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/api/app"
-	"github.com/fintreal/eas-sdk-go/test/utils"
 	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas/internal/api/app"
+	"terraform-provider-eas/internal/eas/test/utils"
 )
 
 func TestAppGet(t *testing.T) {

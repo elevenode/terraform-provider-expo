@@ -3,7 +3,7 @@ package keystore
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/utils"
+	"terraform-provider-eas/internal/eas/internal/utils"
 )
 
 func TestDelete(t *testing.T) {

@@ -3,8 +3,8 @@ package appcredentials
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/api/android/appbuildcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/utils"
+	"terraform-provider-eas/internal/eas/internal/api/android/appbuildcredentials"
+	"terraform-provider-eas/internal/eas/internal/utils"
 )
 
 func TestCreate(t *testing.T) {

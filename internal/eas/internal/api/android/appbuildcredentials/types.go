@@ -1,6 +1,6 @@
 package appbuildcredentials
 
-import "github.com/fintreal/eas-sdk-go/internal/graphql"
+import "terraform-provider-eas/internal/eas/internal/graphql"
 
 type objWithId struct {
 	Id string `json:"id"`

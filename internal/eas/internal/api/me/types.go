@@ -1,7 +1,7 @@
 package me
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 type Data struct {

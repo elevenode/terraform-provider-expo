@@ -1,6 +1,6 @@
 package utils
 
-import "github.com/fintreal/eas-sdk-go/internal/graphql"
+import "terraform-provider-eas/internal/eas/internal/graphql"
 
 type Configuration[InputType any, OutputType any, ResponseType any] struct {
 	Query        string

@@ -3,10 +3,10 @@ package test
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/eas"
-	"github.com/fintreal/eas-sdk-go/internal/api/appvariable"
-	"github.com/fintreal/eas-sdk-go/test/utils"
 	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas"
+	"terraform-provider-eas/internal/eas/internal/api/appvariable"
+	"terraform-provider-eas/internal/eas/test/utils"
 )
 
 func TestAppEnvironmentVariableGet(t *testing.T) {

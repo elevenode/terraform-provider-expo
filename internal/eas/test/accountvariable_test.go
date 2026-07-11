@@ -3,10 +3,10 @@ package test
 import (
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/eas"
-	"github.com/fintreal/eas-sdk-go/internal/api/accountvariable"
-	"github.com/fintreal/eas-sdk-go/test/utils"
 	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas"
+	"terraform-provider-eas/internal/eas/internal/api/accountvariable"
+	"terraform-provider-eas/internal/eas/test/utils"
 )
 
 func TestAccountEnvironmentVariableCreateAndDelete(t *testing.T) {

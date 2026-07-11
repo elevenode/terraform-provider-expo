@@ -1,15 +1,15 @@
 package apple
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/appbuildcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/appcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/appidentifier"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/appstoreapikey"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/certificate"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/provisioningprofile"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/pushkey"
-	"github.com/fintreal/eas-sdk-go/internal/api/apple/team"
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
+	"terraform-provider-eas/internal/eas/internal/api/apple/appbuildcredentials"
+	"terraform-provider-eas/internal/eas/internal/api/apple/appcredentials"
+	"terraform-provider-eas/internal/eas/internal/api/apple/appidentifier"
+	"terraform-provider-eas/internal/eas/internal/api/apple/appstoreapikey"
+	"terraform-provider-eas/internal/eas/internal/api/apple/certificate"
+	"terraform-provider-eas/internal/eas/internal/api/apple/provisioningprofile"
+	"terraform-provider-eas/internal/eas/internal/api/apple/pushkey"
+	"terraform-provider-eas/internal/eas/internal/api/apple/team"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 type Service struct {

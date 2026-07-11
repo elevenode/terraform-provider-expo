@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
 	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 type TestConfig[Input, ExpectedData, MockResponse, Service any] struct {

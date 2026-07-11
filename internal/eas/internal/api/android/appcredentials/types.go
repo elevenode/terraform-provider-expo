@@ -1,8 +1,8 @@
 package appcredentials
 
 import (
-	"github.com/fintreal/eas-sdk-go/internal/api/android/appbuildcredentials"
-	"github.com/fintreal/eas-sdk-go/internal/graphql"
+	"terraform-provider-eas/internal/eas/internal/api/android/appbuildcredentials"
+	"terraform-provider-eas/internal/eas/internal/graphql"
 )
 
 type objWithId struct {
