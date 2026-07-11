@@ -3,7 +3,7 @@ package client
 import (
 	"fmt"
 
-	"github.com/fintreal/eas-sdk-go/eas"
+	"terraform-provider-eas/internal/eas"
 )
 
 type EASClient struct {

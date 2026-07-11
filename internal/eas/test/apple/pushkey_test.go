@@ -1,0 +1,26 @@
+package appletest
+
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"terraform-provider-eas/internal/eas"
+	"terraform-provider-eas/internal/eas/test/utils"
+)
+
+func TestGetPushKeyByIdentifier(t *testing.T) {
+	input := eas.GetByIdentifierPushKeyData{
+		Identifier: "M6SPYT2C2L",
+		AccountId:  utils.AccountId,
+	}
+
+	actualData, actualErr := utils.Client.Apple.PushKey.GetByIdentifier(input)
+
+	expectedData := &eas.PushKeyData{
+		Id:         "be4f6cfa-0f92-4db5-b875-d2a1973e8ad7",
+		Identifier: input.Identifier,
+	}
+
+	assert.Equal(t, expectedData, actualData)
+	assert.Equal(t, nil, actualErr)
+}

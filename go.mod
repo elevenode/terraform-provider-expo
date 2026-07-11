@@ -3,8 +3,9 @@ module terraform-provider-eas
 go 1.25.8
 
 require (
-	github.com/fintreal/eas-sdk-go v1.31.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1
+	github.com/machinebox/graphql v0.2.2
+	github.com/stretchr/testify v1.11.1
 )
 
 require (
@@ -27,7 +28,7 @@ require (
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.2.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
-	github.com/machinebox/graphql v0.2.2 // indirect
+	github.com/matryer/is v1.4.1 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
@@ -39,7 +40,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/stretchr/objx v0.5.3 // indirect
-	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect

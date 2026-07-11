@@ -8,9 +8,9 @@ Terraform provider for managing Expo Application Services (EAS) apps, credential
 
 ## Tech Stack
 
-- Go 1.24
+- Go 1.25
 - Terraform Plugin SDK v2
-- `github.com/fintreal/eas-sdk-go` (private GraphQL client)
+- Expo GraphQL client, vendored in-repo at `internal/eas/` (formerly the standalone `fintreal/eas-sdk-go`, now folded in)
 - GoReleaser for builds/releases
 - GPG-signed releases to Terraform Registry
 
@@ -22,6 +22,9 @@ provider/provider.go             # Provider definition (schema, resources, data 
 provider/<resource>/schema.go    # Resource/data source schema
 provider/<resource>/operations/  # CRUD operations (create.go, read.go, update.go, delete.go)
 internal/client/eas.go           # EAS API client wrapper
+internal/eas/                    # Vendored Expo GraphQL client (public pkg `eas`)
+internal/eas/internal/           # Client internals (api, graphql, utils) -- private
+internal/eas/test/               # Client live integration tests (need EXPO_TOKEN)
 examples/                        # Terraform example configs (used by tfplugindocs)
 docs/                            # Auto-generated registry docs (do not edit manually)
 .github/test/                    # Integration test Terraform configs
@@ -52,9 +55,10 @@ Set `GOPRIVATE=github.com/fintreal/*` for private module access.
 
 ## CI/CD
 
-- **PR / nightly**: Runs `terraform apply` + `terraform destroy` against `.github/test/` configs (test.yml)
-- **Push to main**: Verify gate (`go build`/`go vet`/`gofmt`) → auto-generates docs via pinned `tfplugindocs` → creates semver release → builds with GoReleaser (release.yml)
+- **PR / nightly** (test.yml): unit tests (`go test`, offline) + folded SDK integration tests (`internal/eas/test/`, live) + `terraform apply`/`destroy` against `.github/test/` configs
+- **Push to main** (release.yml): Verify gate (`gofmt`/`go build`/`go vet`/unit tests) → auto-generates docs via pinned `tfplugindocs` → creates semver release → builds with GoReleaser
 - Docs in `docs/` are auto-generated -- do not edit manually
+- The `Integration Test` job needs these repo secrets (migrated from the old SDK repo): `EXPO_TOKEN`, `IMMUTABLE_PROVISIONING_PROFILE_BASE64`, `FCM_KEY`, `KEYSTORE_BASE64`
 
 ## Auth
 
