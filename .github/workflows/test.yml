@@ -20,7 +20,8 @@ env:
   TF_VAR_FCM_KEY: ${{ secrets.TF_VAR_FCM_KEY }}
 
 jobs:
-  Unit Test:
+  unit-test:
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,7 +35,8 @@ jobs:
       - name: Run unit tests
         run: go test $(go list ./... | grep -v '/internal/eas/test') -count=1 -cover
 
-  Integration Test:
+  integration-test:
+    name: Integration Test
     runs-on: ubuntu-latest
     env:
       IMMUTABLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.IMMUTABLE_PROVISIONING_PROFILE_BASE64 }}
