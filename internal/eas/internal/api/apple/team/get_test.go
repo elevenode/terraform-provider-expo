@@ -3,8 +3,8 @@ package team
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetByIdentifier(t *testing.T) {

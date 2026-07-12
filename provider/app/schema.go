@@ -2,8 +2,8 @@ package app
 
 import (
 	"fmt"
-	"regexp"
 	"github.com/elevenode/terraform-provider-expo/provider/app/operations"
+	"regexp"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )

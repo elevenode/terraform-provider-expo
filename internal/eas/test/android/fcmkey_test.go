@@ -3,9 +3,9 @@ package androidtest
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/elevenode/terraform-provider-expo/internal/eas"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/test/utils"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCreateAppFCMKey(t *testing.T) {

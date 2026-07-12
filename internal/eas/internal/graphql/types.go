@@ -1,8 +1,8 @@
 package graphql
 
 import (
-	"github.com/machinebox/graphql"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql/machinebox"
+	"github.com/machinebox/graphql"
 )
 
 type VariableValue interface {

@@ -2,8 +2,8 @@ package appcredentials
 
 import (
 	"encoding/json"
-	"strings"
 	"github.com/elevenode/terraform-provider-expo/provider/android/appcredentials/operations"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
