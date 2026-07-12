@@ -1,7 +1,7 @@
 package main
 
 import (
-	"terraform-provider-eas/provider"
+	"github.com/elevenode/terraform-provider-expo/provider"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"

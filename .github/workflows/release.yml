@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  GOPRIVATE: github.com/fintreal/*
+  GOPRIVATE: github.com/elevenode/*
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:

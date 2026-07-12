@@ -1,14 +1,14 @@
 package eas
 
 import (
-	"terraform-provider-eas/internal/eas/internal/api/account"
-	"terraform-provider-eas/internal/eas/internal/api/accountvariable"
-	"terraform-provider-eas/internal/eas/internal/api/android"
-	"terraform-provider-eas/internal/eas/internal/api/app"
-	"terraform-provider-eas/internal/eas/internal/api/apple"
-	"terraform-provider-eas/internal/eas/internal/api/appvariable"
-	"terraform-provider-eas/internal/eas/internal/api/me"
-	"terraform-provider-eas/internal/eas/internal/graphql"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/account"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/accountvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/android"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/app"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/appvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/me"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 )
 
 // EASClient capable of interacting with Expo EAS GraphQL API

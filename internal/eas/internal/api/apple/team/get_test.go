@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"terraform-provider-eas/internal/eas/internal/graphql"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 )
 
 func TestGetByIdentifier(t *testing.T) {

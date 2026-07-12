@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"terraform-provider-eas/internal/eas"
-	"terraform-provider-eas/internal/eas/test/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/test/utils"
 )
 
 func TestGetAppCredentials(t *testing.T) {

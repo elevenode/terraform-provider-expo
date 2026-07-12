@@ -1,12 +1,12 @@
 terraform {
   required_providers {
-    eas = {
-      source = "fintreal/eas"
+    expo = {
+      source = "elevenode/expo"
     }
   }
 }
 
-provider "eas" {
+provider "expo" {
   token        = "..."
   account_name = "..."
 }

@@ -1,8 +1,8 @@
 package appvariable
 
 import (
-	"terraform-provider-eas/internal/eas/internal/api/environmentvariable"
-	"terraform-provider-eas/internal/eas/internal/graphql"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/environmentvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 )
 
 type Data = environmentvariable.Data

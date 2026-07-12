@@ -1,6 +1,6 @@
 package appcredentials
 
-import "terraform-provider-eas/internal/eas/internal/api/apple/appbuildcredentials"
+import "github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/appbuildcredentials"
 
 func mapData(data data) Data {
 	buildCredentials := []appbuildcredentials.Data{}

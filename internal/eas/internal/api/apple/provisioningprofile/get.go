@@ -3,7 +3,7 @@ package provisioningprofile
 import (
 	"fmt"
 
-	"terraform-provider-eas/internal/eas/internal/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/utils"
 )
 
 type getProvisioningProfilesResponse struct {

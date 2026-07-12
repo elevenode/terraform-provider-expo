@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"terraform-provider-eas/internal/eas/internal/graphql"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 )
 
 type TestConfig[Input, ExpectedData, MockResponse, Service any] struct {

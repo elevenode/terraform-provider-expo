@@ -3,8 +3,8 @@ package appcredentials
 import (
 	"testing"
 
-	"terraform-provider-eas/internal/eas/internal/api/android/appbuildcredentials"
-	"terraform-provider-eas/internal/eas/internal/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/android/appbuildcredentials"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/utils"
 )
 
 func TestCreate(t *testing.T) {

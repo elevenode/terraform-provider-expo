@@ -2,7 +2,7 @@ package appvariable
 
 import (
 	"strings"
-	"terraform-provider-eas/provider/appvariable/operations"
+	"github.com/elevenode/terraform-provider-expo/provider/appvariable/operations"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"

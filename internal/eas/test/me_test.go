@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"terraform-provider-eas/internal/eas/internal/api/me"
-	"terraform-provider-eas/internal/eas/test/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/me"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/test/utils"
 )
 
 func TestGetMe(t *testing.T) {

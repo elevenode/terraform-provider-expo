@@ -1,8 +1,8 @@
 package appcredentials
 
 import (
-	"terraform-provider-eas/internal/eas/internal/api/apple/appbuildcredentials"
-	"terraform-provider-eas/internal/eas/internal/graphql"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/appbuildcredentials"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 )
 
 type objWithId struct {

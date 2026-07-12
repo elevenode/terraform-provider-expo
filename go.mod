@@ -1,4 +1,4 @@
-module terraform-provider-eas
+module github.com/elevenode/terraform-provider-expo
 
 go 1.25.8
 

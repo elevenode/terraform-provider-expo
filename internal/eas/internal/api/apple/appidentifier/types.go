@@ -1,6 +1,6 @@
 package appidentifier
 
-import "terraform-provider-eas/internal/eas/internal/graphql"
+import "github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 
 type Data struct {
 	Id         string `json:"id"`

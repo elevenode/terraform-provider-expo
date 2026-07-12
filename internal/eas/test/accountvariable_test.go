@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"terraform-provider-eas/internal/eas"
-	"terraform-provider-eas/internal/eas/internal/api/accountvariable"
-	"terraform-provider-eas/internal/eas/test/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/accountvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/test/utils"
 )
 
 func TestAccountEnvironmentVariableCreateAndDelete(t *testing.T) {

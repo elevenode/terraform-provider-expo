@@ -1,10 +1,10 @@
-resource "eas_app" "this" {
+resource "expo_app" "this" {
   name = "My App Name"
   slug = "my-app-slug"
 }
 
-resource "eas_app_variable" "this" {
-  app_id       = eas_app.this.id
+resource "expo_app_variable" "this" {
+  app_id       = expo_app.this.id
   name         = "API_URL"
   value        = "http://example.com/api"
   visibility   = "PUBLIC"

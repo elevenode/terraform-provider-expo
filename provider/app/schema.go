@@ -3,7 +3,7 @@ package app
 import (
 	"fmt"
 	"regexp"
-	"terraform-provider-eas/provider/app/operations"
+	"github.com/elevenode/terraform-provider-expo/provider/app/operations"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )

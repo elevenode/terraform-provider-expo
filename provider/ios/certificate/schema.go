@@ -1,7 +1,7 @@
 package certificate
 
 import (
-	"terraform-provider-eas/provider/ios/certificate/operations"
+	"github.com/elevenode/terraform-provider-expo/provider/ios/certificate/operations"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )

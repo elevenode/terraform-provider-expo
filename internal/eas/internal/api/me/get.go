@@ -1,6 +1,6 @@
 package me
 
-import "terraform-provider-eas/internal/eas/internal/utils"
+import "github.com/elevenode/terraform-provider-expo/internal/eas/internal/utils"
 
 type getResponse struct {
 	Data *Data `json:"meActor"`

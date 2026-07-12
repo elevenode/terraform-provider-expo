@@ -3,18 +3,18 @@ package provider
 import (
 	"context"
 	"fmt"
-	"terraform-provider-eas/internal/client"
-	"terraform-provider-eas/provider/accountvariable"
-	androidappcredentials "terraform-provider-eas/provider/android/appcredentials"
-	"terraform-provider-eas/provider/android/googleserviceaccountkey"
-	"terraform-provider-eas/provider/app"
-	"terraform-provider-eas/provider/appvariable"
-	iosappcredentials "terraform-provider-eas/provider/ios/appcredentials"
-	"terraform-provider-eas/provider/ios/appidentifier"
-	"terraform-provider-eas/provider/ios/appstoreapikey"
-	"terraform-provider-eas/provider/ios/certificate"
-	"terraform-provider-eas/provider/ios/provisioningprofile"
-	"terraform-provider-eas/provider/ios/pushkey"
+	"github.com/elevenode/terraform-provider-expo/internal/client"
+	"github.com/elevenode/terraform-provider-expo/provider/accountvariable"
+	androidappcredentials "github.com/elevenode/terraform-provider-expo/provider/android/appcredentials"
+	"github.com/elevenode/terraform-provider-expo/provider/android/googleserviceaccountkey"
+	"github.com/elevenode/terraform-provider-expo/provider/app"
+	"github.com/elevenode/terraform-provider-expo/provider/appvariable"
+	iosappcredentials "github.com/elevenode/terraform-provider-expo/provider/ios/appcredentials"
+	"github.com/elevenode/terraform-provider-expo/provider/ios/appidentifier"
+	"github.com/elevenode/terraform-provider-expo/provider/ios/appstoreapikey"
+	"github.com/elevenode/terraform-provider-expo/provider/ios/certificate"
+	"github.com/elevenode/terraform-provider-expo/provider/ios/provisioningprofile"
+	"github.com/elevenode/terraform-provider-expo/provider/ios/pushkey"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -37,19 +37,19 @@ func Provider() *schema.Provider {
 			},
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-			"eas_app_store_api_key":          appstoreapikey.DataSource(),
-			"eas_ios_certificate":            certificate.DataSource(),
-			"eas_ios_push_key":               pushkey.DataSource(),
-			"eas_google_service_account_key": googleserviceaccountkey.DataSource(),
+			"expo_app_store_api_key":          appstoreapikey.DataSource(),
+			"expo_ios_certificate":            certificate.DataSource(),
+			"expo_ios_push_key":               pushkey.DataSource(),
+			"expo_google_service_account_key": googleserviceaccountkey.DataSource(),
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"eas_android_app_credentials":      androidappcredentials.Resource(),
-			"eas_app":                          app.Resource(),
-			"eas_app_variable":                 appvariable.Resource(),
-			"eas_account_variable":             accountvariable.Resource(),
-			"eas_ios_app_provisioning_profile": provisioningprofile.Resource(),
-			"eas_ios_app_identifier":           appidentifier.Resource(),
-			"eas_ios_app_credentials":          iosappcredentials.Resource(),
+			"expo_android_app_credentials":      androidappcredentials.Resource(),
+			"expo_app":                          app.Resource(),
+			"expo_app_variable":                 appvariable.Resource(),
+			"expo_account_variable":             accountvariable.Resource(),
+			"expo_ios_app_provisioning_profile": provisioningprofile.Resource(),
+			"expo_ios_app_identifier":           appidentifier.Resource(),
+			"expo_ios_app_credentials":          iosappcredentials.Resource(),
 		},
 		ConfigureContextFunc: func(ctx context.Context, d *schema.ResourceData) (any, diag.Diagnostics) {
 			token := d.Get("token").(string)

@@ -1,10 +1,10 @@
-# terraform-provider-eas
+# terraform-provider-expo
 
 Terraform provider for managing Expo Application Services (EAS) apps, credentials, and environment variables via the Expo GraphQL API.
 
-- Repo: `git@github.com:fintreal/terraform-provider-eas.git`
+- Repo: `git@github.com:elevenode/terraform-provider-expo.git`
 - Default branch: `main`
-- Registry namespace: `fintreal/eas`
+- Registry namespace: `elevenode/expo`
 
 ## Tech Stack
 
@@ -32,26 +32,26 @@ docs/                            # Auto-generated registry docs (do not edit man
 
 ### Resources
 
-- `eas_app` - Expo app
-- `eas_app_variable` - App environment variable
-- `eas_android_app_credentials` - Android app credentials
-- `eas_ios_app_credentials` - iOS app credentials
-- `eas_ios_app_identifier` - iOS app identifier (Bundle ID)
-- `eas_ios_app_provisioning_profile` - iOS provisioning profile
+- `expo_app` - Expo app
+- `expo_app_variable` - App environment variable
+- `expo_android_app_credentials` - Android app credentials
+- `expo_ios_app_credentials` - iOS app credentials
+- `expo_ios_app_identifier` - iOS app identifier (Bundle ID)
+- `expo_ios_app_provisioning_profile` - iOS provisioning profile
 
 ### Data Sources
 
-- `eas_app_store_api_key`, `eas_ios_certificate`, `eas_ios_push_key`, `eas_google_service_account_key`
+- `expo_app_store_api_key`, `expo_ios_certificate`, `expo_ios_push_key`, `expo_google_service_account_key`
 
 ## Key Commands
 
 ```bash
-go build -o terraform-provider-eas   # Build the provider
+go build -o terraform-provider-expo   # Build the provider
 go install .                         # Install locally for dev testing
 go mod tidy                          # Tidy dependencies
 ```
 
-Set `GOPRIVATE=github.com/fintreal/*` for private module access.
+Set `GOPRIVATE=github.com/elevenode/*` for private module access.
 
 ## CI/CD
 

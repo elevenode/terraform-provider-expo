@@ -79,7 +79,7 @@ jobs:
           cat > ~/.terraformrc << 'EOF'
           provider_installation {
             dev_overrides {
-              "fintreal/eas" = "/home/runner/go/bin"
+              "elevenode/expo" = "/home/runner/go/bin"
             }
           }
           EOF

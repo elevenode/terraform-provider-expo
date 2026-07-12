@@ -3,7 +3,7 @@ package provisioningprofile
 import (
 	"testing"
 
-	"terraform-provider-eas/internal/eas/internal/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/utils"
 )
 
 func TestDelete(t *testing.T) {

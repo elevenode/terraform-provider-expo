@@ -1,15 +1,15 @@
 package apple
 
 import (
-	"terraform-provider-eas/internal/eas/internal/api/apple/appbuildcredentials"
-	"terraform-provider-eas/internal/eas/internal/api/apple/appcredentials"
-	"terraform-provider-eas/internal/eas/internal/api/apple/appidentifier"
-	"terraform-provider-eas/internal/eas/internal/api/apple/appstoreapikey"
-	"terraform-provider-eas/internal/eas/internal/api/apple/certificate"
-	"terraform-provider-eas/internal/eas/internal/api/apple/provisioningprofile"
-	"terraform-provider-eas/internal/eas/internal/api/apple/pushkey"
-	"terraform-provider-eas/internal/eas/internal/api/apple/team"
-	"terraform-provider-eas/internal/eas/internal/graphql"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/appbuildcredentials"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/appcredentials"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/appidentifier"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/appstoreapikey"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/certificate"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/provisioningprofile"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/pushkey"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/team"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
 )
 
 type Service struct {

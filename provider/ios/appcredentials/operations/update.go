@@ -2,11 +2,11 @@ package operations
 
 import (
 	"context"
-	"terraform-provider-eas/internal/client"
+	"github.com/elevenode/terraform-provider-expo/internal/client"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"terraform-provider-eas/internal/eas"
+	"github.com/elevenode/terraform-provider-expo/internal/eas"
 )
 
 func Update(ctx context.Context, d *schema.ResourceData, m any) diag.Diagnostics {

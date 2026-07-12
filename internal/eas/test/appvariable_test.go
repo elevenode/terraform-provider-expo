@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"terraform-provider-eas/internal/eas"
-	"terraform-provider-eas/internal/eas/internal/api/appvariable"
-	"terraform-provider-eas/internal/eas/test/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/appvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/test/utils"
 )
 
 func TestAppEnvironmentVariableGet(t *testing.T) {

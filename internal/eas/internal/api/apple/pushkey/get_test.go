@@ -3,7 +3,7 @@ package pushkey
 import (
 	"testing"
 
-	"terraform-provider-eas/internal/eas/internal/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/utils"
 )
 
 func TestGetByIdentifier(t *testing.T) {

@@ -3,7 +3,7 @@ package app
 import (
 	"testing"
 
-	"terraform-provider-eas/internal/eas/internal/utils"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/utils"
 )
 
 func TestGet(t *testing.T) {

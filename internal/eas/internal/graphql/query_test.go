@@ -8,7 +8,7 @@ import (
 	"github.com/machinebox/graphql"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"terraform-provider-eas/internal/eas/internal/graphql/machinebox"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql/machinebox"
 )
 
 func TestQuery(t *testing.T) {

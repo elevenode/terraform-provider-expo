@@ -2,15 +2,15 @@ package accountvariable
 
 import (
 	"strings"
-	"terraform-provider-eas/provider/accountvariable/operations"
+	"github.com/elevenode/terraform-provider-expo/provider/accountvariable/operations"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 )
 
-// Resource defines the eas_account_variable resource. Account environment
+// Resource defines the expo_account_variable resource. Account environment
 // variables belong to the account configured on the provider (account_name),
-// so — unlike eas_app_variable — this resource takes no app/account id.
+// so — unlike expo_app_variable — this resource takes no app/account id.
 func Resource() *schema.Resource {
 	return &schema.Resource{
 		ReadContext:   operations.Read,
