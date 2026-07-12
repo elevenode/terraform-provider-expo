@@ -9,7 +9,6 @@ on:
     - cron: '0 2 * * *'
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
   EXPO_ACCOUNT_NAME: ${{ secrets.EXPO_ACCOUNT_NAME }}
   TF_VAR_APP_STORE_API_KEY_IDENTIFIER: ${{ secrets.TF_VAR_APP_STORE_API_KEY_IDENTIFIER }}
