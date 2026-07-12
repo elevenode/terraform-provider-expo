@@ -1,8 +1,8 @@
 package accountvariable
 
 import (
-	"strings"
 	"github.com/elevenode/terraform-provider-expo/provider/accountvariable/operations"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
