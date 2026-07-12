@@ -39,21 +39,42 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for existing tags
+        id: tags
+        run: |
+          if [ -z "$(git tag -l)" ]; then
+            echo "exist=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "exist=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Get next version
         id: semver
+        if: steps.tags.outputs.exist == 'true'
         uses: ietf-tools/semver-action@v1.10.1
         with:
           token: ${{ github.token }}
           branch: main
           noVersionBumpBehavior: patch
 
+      - name: Resolve version (default to v1.0.0 when no prior tag exists)
+        id: version
+        run: |
+          if [ "${{ steps.tags.outputs.exist }}" = "true" ]; then
+            echo "next=${{ steps.semver.outputs.next }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "next=v1.0.0" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Create release
         uses: ncipollo/release-action@v1.16.0
         with:
           makeLatest: true
-          name: ${{ steps.semver.outputs.next }}
-          tag: ${{ steps.semver.outputs.next }}
+          name: ${{ steps.version.outputs.next }}
+          tag: ${{ steps.version.outputs.next }}
           body: Changelog Contents
           token: ${{ github.token }}
 
