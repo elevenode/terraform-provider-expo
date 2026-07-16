@@ -80,8 +80,15 @@ jobs:
             dev_overrides {
               "elevenode/expo" = "/home/runner/go/bin"
             }
+            # Without this, dev_overrides is the only install method and no
+            # registry provider (e.g. hashicorp/random) can be resolved.
+            direct {}
           }
           EOF
+
+      - name: Terraform Init
+        working-directory: .github/test
+        run: terraform init
 
       - name: Terraform Apply
         working-directory: .github/test

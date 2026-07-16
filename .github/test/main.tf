@@ -3,10 +3,21 @@ terraform {
     expo = {
       source = "elevenode/expo"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.6"
+    }
   }
 }
 
 provider "expo" {}
+
+# Branch/channel names are unique per app and are not reclaimed by a failed
+# destroy, so a fixed name would wedge every later run.
+resource "random_pet" "update_name" {
+  prefix = "terraform-test"
+  length = 2
+}
 
 resource "expo_app" "this" {
   name = "Terraform Provider EAS"
@@ -30,12 +41,12 @@ resource "expo_account_variable" "this" {
 
 resource "expo_update_branch" "this" {
   app_id = expo_app.this.id
-  name   = "terraform-test"
+  name   = random_pet.update_name.id
 }
 
 resource "expo_update_channel" "this" {
   app_id = expo_app.this.id
-  name   = "terraform-test"
+  name   = random_pet.update_name.id
 
   branch_mapping = jsonencode({
     version = 0
