@@ -11,7 +11,7 @@ import (
 func TestAppGet(t *testing.T) {
 	expectedData := &app.Data{
 		Id:   utils.ImmutableAppId,
-		Name: "Test App",
+		Name: "Integration Test Fixture",
 		Slug: "test-app",
 	}
 
@@ -24,7 +24,7 @@ func TestAppGet(t *testing.T) {
 func TestAppGetByFullName(t *testing.T) {
 	expectedData := &app.Data{
 		Id:   utils.ImmutableAppId,
-		Name: "Test App",
+		Name: "Integration Test Fixture",
 		Slug: "test-app",
 	}
 
