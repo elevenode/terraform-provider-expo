@@ -2,8 +2,10 @@ package app
 
 import (
 	"fmt"
-	"github.com/elevenode/terraform-provider-expo/provider/app/operations"
 	"regexp"
+	"time"
+
+	"github.com/elevenode/terraform-provider-expo/provider/app/operations"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -15,6 +17,10 @@ func Resource() *schema.Resource {
 		UpdateContext: operations.Update,
 		DeleteContext: operations.Delete,
 		Importer:      &schema.ResourceImporter{StateContext: operations.Import},
+		// EAS deletes apps through an asynchronous background job that the provider waits on.
+		Timeouts: &schema.ResourceTimeout{
+			Delete: schema.DefaultTimeout(10 * time.Minute),
+		},
 		Schema: map[string]*schema.Schema{
 			"id": {
 				Description: "app id",

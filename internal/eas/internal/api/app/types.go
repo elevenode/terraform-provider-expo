@@ -1,6 +1,9 @@
 package app
 
-import "github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
+import (
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/backgroundjob"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/graphql"
+)
 
 type Data struct {
 	Id   string `json:"id"`
@@ -24,6 +27,7 @@ type Service interface {
 	Update(data UpdateData) (*Data, error)
 	Get(id string) (*Data, error)
 	GetByFullName(fullName string) (*Data, error)
+	Delete(id string) (*backgroundjob.Data, error)
 }
 
 type service struct {

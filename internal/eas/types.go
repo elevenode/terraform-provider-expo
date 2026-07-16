@@ -18,6 +18,7 @@ import (
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/pushkey"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/team"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/appvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/backgroundjob"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/environmentvariable"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/me"
 )
@@ -31,6 +32,16 @@ type UpdateEnvironmentVariableData = environmentvariable.UpdateData
 type AppData = app.Data
 type CreateAppData = app.CreateData
 type UpdateAppData = app.UpdateData
+
+type BackgroundJobData = backgroundjob.Data
+type BackgroundJobState = backgroundjob.State
+
+const (
+	BackgroundJobStateQueued     = backgroundjob.StateQueued
+	BackgroundJobStateInProgress = backgroundjob.StateInProgress
+	BackgroundJobStateSuccess    = backgroundjob.StateSuccess
+	BackgroundJobStateFailure    = backgroundjob.StateFailure
+)
 
 type AppVariableData = appvariable.Data
 type CreateAppVariableData = appvariable.CreateData

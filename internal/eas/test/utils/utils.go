@@ -1,8 +1,10 @@
 package utils
 
 import (
+	"fmt"
 	"math/rand"
 	"os"
+	"time"
 
 	"github.com/elevenode/terraform-provider-expo/internal/eas"
 )
@@ -51,6 +53,53 @@ var MutableAppIdentifierName = "mutable.app.identifier"
 var ImmutableKeystoreId = "67484c57-542f-48fc-a470-fa6703a3a6f5"
 
 const charset = "abcdefghijklmnopqrstuvwxyz"
+
+const (
+	AppDeletionTimeout        = 2 * time.Minute
+	backgroundJobPollInterval = 2 * time.Second
+)
+
+// WaitForBackgroundJob polls a background job receipt until it settles or the timeout expires.
+func WaitForBackgroundJob(id string, timeout time.Duration) (*eas.BackgroundJobData, error) {
+	deadline := time.Now().Add(timeout)
+
+	for {
+		receipt, err := Client.BackgroundJob.Get(id)
+		if err != nil {
+			return nil, err
+		}
+		if receipt == nil {
+			return nil, fmt.Errorf("background job %s not found", id)
+		}
+
+		switch {
+		case receipt.State == eas.BackgroundJobStateSuccess:
+			return receipt, nil
+		case receipt.State == eas.BackgroundJobStateFailure && !receipt.WillRetry:
+			return receipt, fmt.Errorf("background job %s failed: %s %s", id, receipt.ErrorCode, receipt.ErrorMessage)
+		}
+
+		if time.Now().After(deadline) {
+			return receipt, fmt.Errorf("timed out waiting for background job %s, last state %s", id, receipt.State)
+		}
+
+		time.Sleep(backgroundJobPollInterval)
+	}
+}
+
+// DeleteApp deletes an app and waits for the deletion to finish, so tests don't leak projects.
+func DeleteApp(id string) error {
+	receipt, err := Client.App.Delete(id)
+	if err != nil {
+		return err
+	}
+	if receipt == nil {
+		return fmt.Errorf("no background job receipt returned for the deletion of app %s", id)
+	}
+
+	_, err = WaitForBackgroundJob(receipt.Id, AppDeletionTimeout)
+	return err
+}
 
 func getEnvOrDefault(key, defaultValue string) string {
 	if value := os.Getenv(key); value != "" {
