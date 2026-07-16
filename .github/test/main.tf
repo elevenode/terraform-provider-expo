@@ -21,7 +21,7 @@ resource "random_string" "update_name" {
 }
 
 resource "expo_app" "this" {
-  name = "Terraform Provider EAS"
+  name = "Terraform E2E"
   slug = "terraform-provider-expo"
 }
 
