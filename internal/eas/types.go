@@ -18,6 +18,7 @@ import (
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/pushkey"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple/team"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/appvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/backgroundjob"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/environmentvariable"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/me"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/updatebranch"
@@ -95,6 +96,16 @@ type CreateAndroidKeystoreData = keystore.CreateData
 type UpdateBranchData = updatebranch.Data
 type CreateUpdateBranchData = updatebranch.CreateData
 type GetByNameUpdateBranchData = updatebranch.GetByNameData
+
+type BackgroundJobData = backgroundjob.Data
+type BackgroundJobState = backgroundjob.State
+
+const (
+	BackgroundJobStateQueued     = backgroundjob.StateQueued
+	BackgroundJobStateInProgress = backgroundjob.StateInProgress
+	BackgroundJobStateSuccess    = backgroundjob.StateSuccess
+	BackgroundJobStateFailure    = backgroundjob.StateFailure
+)
 
 type UpdateChannelData = updatechannel.Data
 type CreateUpdateChannelData = updatechannel.CreateData

@@ -1,6 +1,8 @@
 package updatechannel
 
 import (
+	"time"
+
 	"github.com/elevenode/terraform-provider-expo/provider/updatechannel/operations"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -10,11 +12,15 @@ import (
 
 func Resource() *schema.Resource {
 	return &schema.Resource{
+		Description:   "An EAS Update channel. Deleting a channel also permanently deletes every build associated with it.",
 		ReadContext:   operations.Read,
 		CreateContext: operations.Create,
 		UpdateContext: operations.Update,
 		DeleteContext: operations.Delete,
 		Importer:      &schema.ResourceImporter{StateContext: operations.Import},
+		Timeouts: &schema.ResourceTimeout{
+			Delete: schema.DefaultTimeout(10 * time.Minute),
+		},
 		Schema: map[string]*schema.Schema{
 			"app_id": {
 				Description: "The id of the app the update channel belongs to",

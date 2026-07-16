@@ -3,12 +3,12 @@
 page_title: "expo_update_channel Resource - terraform-provider-expo"
 subcategory: ""
 description: |-
-  
+  An EAS Update channel. Deleting a channel also permanently deletes every build associated with it.
 ---
 
 # expo_update_channel (Resource)
 
-
+An EAS Update channel. Deleting a channel also permanently deletes every build associated with it.
 
 ## Example Usage
 
@@ -71,6 +71,17 @@ resource "expo_update_channel" "rollout" {
 - `branch_mapping` (String) Stringified JSON describing which branches the channel routes updates to. Use `jsonencode()`. See https://docs.expo.dev/eas-update/channel-surfing/ for the mapping format, including rollouts.
 - `name` (String) The name of the update channel. This is the value referenced by a build profile's `channel` in eas.json.
 
+### Optional
+
+- `timeouts` (Block, Optional) (see [below for nested schema](#nestedblock--timeouts))
+
 ### Read-Only
 
 - `id` (String) The id of the update channel
+
+<a id="nestedblock--timeouts"></a>
+### Nested Schema for `timeouts`
+
+Optional:
+
+- `delete` (String)

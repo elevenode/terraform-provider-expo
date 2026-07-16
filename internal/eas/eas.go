@@ -7,6 +7,7 @@ import (
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/app"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/apple"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/appvariable"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/backgroundjob"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/me"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/updatebranch"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/updatechannel"
@@ -24,6 +25,7 @@ type EASClient struct {
 	Android         android.Service
 	UpdateBranch    updatebranch.Service
 	UpdateChannel   updatechannel.Service
+	BackgroundJob   backgroundjob.Service
 }
 
 // EASClient capable of interacting with Expo EAS GraphQL API
@@ -44,5 +46,6 @@ func NewEASClient(token string) *EASClient {
 		Android:         android.NewService(graphql),
 		UpdateBranch:    updatebranch.NewService(graphql),
 		UpdateChannel:   updatechannel.NewService(graphql),
+		BackgroundJob:   backgroundjob.NewService(graphql),
 	}
 }
