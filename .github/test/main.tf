@@ -28,6 +28,24 @@ resource "expo_account_variable" "this" {
   environments = ["DEVELOPMENT"]
 }
 
+resource "expo_update_branch" "this" {
+  app_id = expo_app.this.id
+  name   = "terraform-test"
+}
+
+resource "expo_update_channel" "this" {
+  app_id = expo_app.this.id
+  name   = "terraform-test"
+
+  branch_mapping = jsonencode({
+    version = 0
+    data = [{
+      branchId           = expo_update_branch.this.id
+      branchMappingLogic = "true"
+    }]
+  })
+}
+
 resource "expo_ios_app_identifier" "this" {
   identifier = local.bundle_identifier
 }

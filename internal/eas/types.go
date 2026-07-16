@@ -20,6 +20,8 @@ import (
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/appvariable"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/environmentvariable"
 	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/me"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/updatebranch"
+	"github.com/elevenode/terraform-provider-expo/internal/eas/internal/api/updatechannel"
 )
 
 type MeData = me.Data
@@ -89,3 +91,12 @@ type CreateFCMKey = fcmkey.CreateData
 
 type AndroidKeystoreData = keystore.Data
 type CreateAndroidKeystoreData = keystore.CreateData
+
+type UpdateBranchData = updatebranch.Data
+type CreateUpdateBranchData = updatebranch.CreateData
+type GetByNameUpdateBranchData = updatebranch.GetByNameData
+
+type UpdateChannelData = updatechannel.Data
+type CreateUpdateChannelData = updatechannel.CreateData
+type UpdateUpdateChannelData = updatechannel.UpdateData
+type GetByNameUpdateChannelData = updatechannel.GetByNameData

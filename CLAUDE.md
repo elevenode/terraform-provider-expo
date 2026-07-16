@@ -38,6 +38,8 @@ docs/                            # Auto-generated registry docs (do not edit man
 - `expo_ios_app_credentials` - iOS app credentials
 - `expo_ios_app_identifier` - iOS app identifier (Bundle ID)
 - `expo_ios_app_provisioning_profile` - iOS provisioning profile
+- `expo_update_branch` - EAS Update branch
+- `expo_update_channel` - EAS Update channel (branch mapping, rollouts)
 
 ### Data Sources
 
