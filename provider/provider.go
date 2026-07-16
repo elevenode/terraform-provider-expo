@@ -15,6 +15,8 @@ import (
 	"github.com/elevenode/terraform-provider-expo/provider/ios/certificate"
 	"github.com/elevenode/terraform-provider-expo/provider/ios/provisioningprofile"
 	"github.com/elevenode/terraform-provider-expo/provider/ios/pushkey"
+	"github.com/elevenode/terraform-provider-expo/provider/updatebranch"
+	"github.com/elevenode/terraform-provider-expo/provider/updatechannel"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -50,6 +52,8 @@ func Provider() *schema.Provider {
 			"expo_ios_app_provisioning_profile": provisioningprofile.Resource(),
 			"expo_ios_app_identifier":           appidentifier.Resource(),
 			"expo_ios_app_credentials":          iosappcredentials.Resource(),
+			"expo_update_branch":                updatebranch.Resource(),
+			"expo_update_channel":               updatechannel.Resource(),
 		},
 		ConfigureContextFunc: func(ctx context.Context, d *schema.ResourceData) (any, diag.Diagnostics) {
 			token := d.Get("token").(string)
