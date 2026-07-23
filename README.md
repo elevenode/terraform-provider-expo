@@ -19,8 +19,8 @@ terraform {
 }
 
 provider "expo" {
-  access_token = var.expo_access_token # or set EXPO_TOKEN
-  account_name = "your-account-name"   # or set EXPO_ACCOUNT_NAME
+  token        = var.expo_token       # or set EXPO_TOKEN
+  account_name = "your-account-name"  # or set EXPO_ACCOUNT_NAME
 }
 ```
 
@@ -34,7 +34,7 @@ The provider requires an Expo access token and account name.
    - Log into your Expo account at https://expo.dev
    - Go to your account settings
    - Create a new access token under the "Access Tokens" section
-   - Provide it via the `access_token` argument or the `EXPO_TOKEN` environment variable
+   - Provide it via the `token` argument or the `EXPO_TOKEN` environment variable
 
 2. **Account Name**
    - Your Expo account username (not email)
