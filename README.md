@@ -1,27 +1,65 @@
-## Expo Application Services Terraform Provider
+# Expo Application Services (EAS) Terraform Provider
 
-- Manage Expo EAS app, credentials and environment variables with `terraform`
-- Uses Expo EAS GraphQL API
+[![Terraform Registry](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.terraform.io%2Fv1%2Fproviders%2Felevenode%2Fexpo&query=%24.version&label=terraform%20registry&color=7B42BC&logo=terraform)](https://registry.terraform.io/providers/elevenode/expo/latest)
+[![License](https://img.shields.io/github/license/elevenode/terraform-provider-expo)](./LICENSE)
 
-### Authentication
+Manage [Expo Application Services (EAS)](https://expo.dev/eas) as code: EAS apps, credentials, environment variables, and update channels. Backed by the Expo EAS GraphQL API.
 
-The provider requires an Expo access token and account name for authentication:
+## Installation
 
-1. **Access Token**:
+Add the provider to your Terraform configuration:
+
+```hcl
+terraform {
+  required_providers {
+    expo = {
+      source = "elevenode/expo"
+    }
+  }
+}
+
+provider "expo" {
+  access_token = var.expo_access_token # or set EXPO_TOKEN
+  account_name = "your-account-name"   # or set EXPO_ACCOUNT_NAME
+}
+```
+
+Then run `terraform init` to download the provider from the [Terraform Registry](https://registry.terraform.io/providers/elevenode/expo/latest).
+
+## Authentication
+
+The provider requires an Expo access token and account name.
+
+1. **Access Token**
    - Log into your Expo account at https://expo.dev
    - Go to your account settings
    - Create a new access token under the "Access Tokens" section
+   - Provide it via the `access_token` argument or the `EXPO_TOKEN` environment variable
 
-2. **Account Name**:
-   - This is your Expo account username (not email)
-   - You can find it in your Expo account settings or in the URL when logged into expo.dev (e.g., https://expo.dev/your-account-name)
+2. **Account Name**
+   - Your Expo account username (not email)
+   - Found in your account settings or in the URL when logged into expo.dev (e.g. `https://expo.dev/your-account-name`)
    - For organizations, use the organization's account name
-   - Example: If your Expo account URL is `https://expo.dev/acme-corp`, then your account name is `acme-corp`
+   - Provide it via the `account_name` argument or the `EXPO_ACCOUNT_NAME` environment variable
 
-### Documentation
+## Documentation
 
-For detailed documentation about available resources and data sources, please refer to the [examples directory](./examples):
+Full resource and data-source documentation is on the [Terraform Registry](https://registry.terraform.io/providers/elevenode/expo/latest/docs).
 
-- [Resource Examples](./examples/resources) - Examples for managing EAS apps and variables
-- [Data Source Examples](./examples/data-sources) - Examples for querying EAS apps and variables
-- [Provider Configuration Examples](./examples/provider) - Additional provider configuration examples
+Runnable examples live in the [examples directory](./examples):
+
+- [Resource Examples](./examples/resources) — managing EAS apps, credentials, and variables
+- [Data Source Examples](./examples/data-sources) — querying EAS apps and variables
+- [Provider Configuration Examples](./examples/provider) — additional provider configuration
+
+## Contributing
+
+Issues and pull requests are welcome. Please open an issue to discuss significant changes before submitting a PR.
+
+## Security
+
+Please report vulnerabilities privately as described in [SECURITY.md](./SECURITY.md).
+
+## License
+
+Apache 2.0 — see [LICENSE](./LICENSE).
