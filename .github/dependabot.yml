@@ -4,6 +4,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      go-dependencies:
+        patterns: ["*"]
     commit-message:
       prefix: "build(deps)"
 
@@ -11,5 +14,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
     commit-message:
       prefix: "ci(deps)"
