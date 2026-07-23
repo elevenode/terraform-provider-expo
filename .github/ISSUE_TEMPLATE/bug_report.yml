@@ -1,0 +1,55 @@
+name: Bug report
+description: Report a problem with the provider
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please do not include secrets (tokens, keys) in logs or config.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Terraform configuration
+      description: Minimal config that reproduces the issue (redact any secrets).
+      render: hcl
+    validations:
+      required: false
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. terraform init
+        2. terraform apply
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: provider-version
+    attributes:
+      label: Provider version
+      placeholder: e.g. 1.1.2
+    validations:
+      required: true
+  - type: input
+    id: terraform-version
+    attributes:
+      label: Terraform version
+      placeholder: e.g. 1.9.0
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Error output or `TF_LOG=DEBUG` excerpts (redact secrets).
+      render: shell
+    validations:
+      required: false
