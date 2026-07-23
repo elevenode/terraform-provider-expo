@@ -75,7 +75,7 @@ jobs:
           makeLatest: true
           name: ${{ steps.version.outputs.next }}
           tag: ${{ steps.version.outputs.next }}
-          body: Changelog Contents
+          generateReleaseNotes: true
           token: ${{ github.token }}
 
   Release:
