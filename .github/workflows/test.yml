@@ -37,6 +37,7 @@ jobs:
   integration-test:
     name: Integration Test
     runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
     env:
       IMMUTABLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.IMMUTABLE_PROVISIONING_PROFILE_BASE64 }}
       FCM_KEY: ${{ secrets.FCM_KEY }}
@@ -55,6 +56,7 @@ jobs:
 
   Test:
     runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
