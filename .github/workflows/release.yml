@@ -70,7 +70,7 @@ jobs:
           fi
 
       - name: Create release
-        uses: ncipollo/release-action@v1.16.0
+        uses: ncipollo/release-action@v1.21.0
         with:
           makeLatest: true
           name: ${{ steps.version.outputs.next }}
