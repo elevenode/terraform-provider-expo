@@ -7,6 +7,7 @@ import (
 	"github.com/elevenode/terraform-provider-expo/provider/accountvariable"
 	androidappcredentials "github.com/elevenode/terraform-provider-expo/provider/android/appcredentials"
 	"github.com/elevenode/terraform-provider-expo/provider/android/googleserviceaccountkey"
+	androidkeystore "github.com/elevenode/terraform-provider-expo/provider/android/keystore"
 	"github.com/elevenode/terraform-provider-expo/provider/app"
 	"github.com/elevenode/terraform-provider-expo/provider/appvariable"
 	iosappcredentials "github.com/elevenode/terraform-provider-expo/provider/ios/appcredentials"
@@ -46,6 +47,8 @@ func Provider() *schema.Provider {
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"expo_android_app_credentials":      androidappcredentials.Resource(),
+			"expo_android_keystore":             androidkeystore.Resource(),
+			"expo_google_service_account_key":   googleserviceaccountkey.Resource(),
 			"expo_app":                          app.Resource(),
 			"expo_app_variable":                 appvariable.Resource(),
 			"expo_account_variable":             accountvariable.Resource(),

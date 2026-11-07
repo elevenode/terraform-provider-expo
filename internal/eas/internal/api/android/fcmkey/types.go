@@ -9,7 +9,6 @@ type Data struct {
 
 type CreateData struct {
 	KeyJson          string
-	AccountId        string
 	AppCredentialsId string
 }
 

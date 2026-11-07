@@ -17,6 +17,7 @@ func Read(ctx context.Context, d *schema.ResourceData, m any) diag.Diagnostics {
 	input := eas.GetByProjectIdentifierGoogleServiceAccountKeyData{
 		AccountId:         client.AccountId,
 		ProjectIdentifier: identifier,
+		ClientEmail:       d.Get("client_email").(string),
 	}
 	data, err := client.Android.GoogleServiceAccountKey.GetByProjectIdentifier(input)
 

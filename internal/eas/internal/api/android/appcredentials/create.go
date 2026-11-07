@@ -9,7 +9,7 @@ type createResponse struct {
 }
 
 const createQuery = `
-	mutation ($appId: ID!, $identifier: String!, $googleServiceAccountKeyId: ID!) {
+	mutation ($appId: ID!, $identifier: String!, $googleServiceAccountKeyId: ID) {
     androidAppCredentials {
       createAndroidAppCredentials(
         appId: $appId
@@ -31,10 +31,16 @@ const createQuery = `
 `
 
 func (service *service) Create(input CreateData) (*Data, error) {
+	// The submissions key is optional in EAS; send null rather than "" when unset.
+	var googleServiceAccountKeyId any
+	if input.GoogleServiceAccountKeyId != "" {
+		googleServiceAccountKeyId = input.GoogleServiceAccountKeyId
+	}
+
 	variables := map[string]any{
 		"appId":                     input.AppId,
 		"identifier":                input.Identifier,
-		"googleServiceAccountKeyId": input.GoogleServiceAccountKeyId,
+		"googleServiceAccountKeyId": googleServiceAccountKeyId,
 	}
 
 	var response createResponse

@@ -54,3 +54,44 @@ func TestCreate(t *testing.T) {
 	}
 	utils.Test(t, config)
 }
+
+func TestCreateWithoutGoogleServiceAccountKey(t *testing.T) {
+	expectedData := &Data{
+		Id:               "test-id",
+		AppId:            "test-app-id",
+		Identifier:       "test-identifier",
+		BuildCredentials: []appbuildcredentials.Data{},
+	}
+
+	expectedVariables := map[string]any{
+		"appId":                     expectedData.AppId,
+		"identifier":                expectedData.Identifier,
+		"googleServiceAccountKeyId": nil,
+	}
+
+	mockResponse := createResponse{
+		AndroidAppCredentials: createAndroidAppCredentials{
+			Data: data{
+				Id:         expectedData.Id,
+				App:        objWithId{Id: expectedData.AppId},
+				Identifier: expectedData.Identifier,
+			},
+		},
+	}
+
+	input := &CreateData{
+		AppId:      expectedData.AppId,
+		Identifier: expectedData.Identifier,
+	}
+
+	config := utils.TestConfig[CreateData, Data, createResponse, Service]{
+		NewServiceFunction: NewService,
+		FunctionUnderTest:  "Create",
+		Input:              input,
+		MockResponse:       mockResponse,
+		ExpectedQuery:      createQuery,
+		ExpectedVariables:  expectedVariables,
+		ExpectedData:       expectedData,
+	}
+	utils.Test(t, config)
+}

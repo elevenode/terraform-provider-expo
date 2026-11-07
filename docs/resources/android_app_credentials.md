@@ -3,33 +3,46 @@
 page_title: "expo_android_app_credentials Resource - terraform-provider-expo"
 subcategory: ""
 description: |-
-  
+  Android credentials for an EAS app: the Google service account key used for Play Store submissions, the FCM V1 push key, and the keystores used to sign builds.
 ---
 
 # expo_android_app_credentials (Resource)
 
-
+Android credentials for an EAS app: the Google service account key used for Play Store submissions, the FCM V1 push key, and the keystores used to sign builds.
 
 ## Example Usage
 
 ```terraform
-resource "expo_app" "expo_app" {
+resource "expo_app" "this" {
   name = "My App Name"
   slug = "my-app-slug"
 }
 
-data "expo_google_service_account_key" "this" {
-  project_identifier = "..."
+# Upload a Google service account key for Play Store submissions.
+# To use a key that is already in EAS, use the data source instead:
+#   data "expo_google_service_account_key" "this" { project_identifier = "my-gcp-project" }
+resource "expo_google_service_account_key" "submissions" {
+  key_json = file("${path.module}/play-service-account.json")
+}
+
+resource "expo_android_keystore" "release" {
+  keystore_base64   = filebase64("${path.module}/release.jks")
+  keystore_password = var.keystore_password
+  key_alias         = "upload"
+  key_password      = var.key_password
 }
 
 resource "expo_android_app_credentials" "this" {
   app_id                        = expo_app.this.id
   identifier                    = "com.example.myapp"
-  google_service_account_key_id = data.expo_google_service_account_key.this.id
-  fcm_key                       = "..."
+  google_service_account_key_id = expo_google_service_account_key.submissions.id
+
+  # Optional: service account key JSON used for FCM V1 push notifications.
+  fcm_key = file("${path.module}/fcm-service-account.json")
+
   build_credentials {
     name        = "Default"
-    keystore_id = "..."
+    keystore_id = expo_android_keystore.release.id
   }
 }
 ```
@@ -40,13 +53,13 @@ resource "expo_android_app_credentials" "this" {
 ### Required
 
 - `app_id` (String) EAS App Id
-- `google_service_account_key_id` (String) Google Service Account Key Id
 - `identifier` (String) Identifier of the Android App
 
 ### Optional
 
 - `build_credentials` (Block List) EAS Android Build Credentials (see [below for nested schema](#nestedblock--build_credentials))
-- `fcm_key` (String, Sensitive) FCM Google Service Account Key Id
+- `fcm_key` (String, Sensitive) JSON contents of the Google service account key used for FCM V1 push notifications.
+- `google_service_account_key_id` (String) EAS Id of the Google Service Account Key used for Play Store submissions. Use the `id` of an `expo_google_service_account_key` resource (to upload a key) or data source (to look up one already in EAS).
 
 ### Read-Only
 
@@ -57,7 +70,7 @@ resource "expo_android_app_credentials" "this" {
 
 Required:
 
-- `keystore_id` (String) EAS Id of the Android Keystore
+- `keystore_id` (String) EAS Id of the Android Keystore, e.g. the `id` of an `expo_android_keystore` resource.
 - `name` (String) Name of the Android Build Credential
 
 Read-Only:

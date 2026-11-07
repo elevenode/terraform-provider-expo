@@ -3,18 +3,22 @@
 page_title: "expo_google_service_account_key Data Source - terraform-provider-expo"
 subcategory: ""
 description: |-
-  
+  Looks up a Google service account key that is already uploaded to the EAS account. To upload one with Terraform, use the expo_google_service_account_key resource.
 ---
 
 # expo_google_service_account_key (Data Source)
 
-
+Looks up a Google service account key that is already uploaded to the EAS account. To upload one with Terraform, use the `expo_google_service_account_key` resource.
 
 ## Example Usage
 
 ```terraform
+# Look up a key already uploaded to EAS by the `project_id` of its JSON key file.
 data "expo_google_service_account_key" "this" {
-  project_identifier = "..."
+  project_identifier = "my-gcp-project"
+
+  # Optional: pick one key when several belong to the same GCP project.
+  client_email = "eas-submit@my-gcp-project.iam.gserviceaccount.com"
 }
 ```
 
@@ -23,10 +27,13 @@ data "expo_google_service_account_key" "this" {
 
 ### Required
 
-- `project_identifier` (String) Project Identifier of the Google Service Account Key
+- `project_identifier` (String) GCP project id of the key (`project_id` in the JSON key file)
+
+### Optional
+
+- `client_email` (String) Google Service Account Email. Set it to pick one key when several keys in EAS belong to the same GCP project.
 
 ### Read-Only
 
-- `client_email` (String) Google Service Account Email
 - `client_identifier` (String) Google Service Account Identifier
 - `id` (String) EAS Id of the Google Service Account Key

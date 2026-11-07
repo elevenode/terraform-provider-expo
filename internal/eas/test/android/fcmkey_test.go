@@ -10,7 +10,6 @@ import (
 
 func TestCreateAppFCMKey(t *testing.T) {
 	input := eas.CreateFCMKey{
-		AccountId:        utils.AccountId,
 		AppCredentialsId: "158aee51-3df6-45ba-9b18-04f33ca0cd39",
 		KeyJson:          utils.FCMKey,
 	}

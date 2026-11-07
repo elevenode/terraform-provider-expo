@@ -48,3 +48,42 @@ func TestCreate(t *testing.T) {
 	}
 	utils.Test(t, config)
 }
+
+func TestCreateWithoutKeyPassword(t *testing.T) {
+	input := &CreateData{
+		AccountId:        "test-account-id",
+		KeystoreBase64:   "test-keystore-base64",
+		KeyAlias:         "test-key-alias",
+		KeystorePassword: "test-keystore-password",
+	}
+
+	expectedData := &Data{
+		Id:               "test-id",
+		KeyAlias:         input.KeyAlias,
+		Keystore:         "test-keystore",
+		KeystorePassword: input.KeystorePassword,
+	}
+
+	expectedVariables := map[string]any{
+		"accountId":        input.AccountId,
+		"keystoreBase64":   input.KeystoreBase64,
+		"keyAlias":         input.KeyAlias,
+		"keyPassword":      nil,
+		"keystorePassword": input.KeystorePassword,
+	}
+
+	mockResponse := createResponse{
+		AndroidKeystore: createAndroidKeystore{Data: *expectedData},
+	}
+
+	config := utils.TestConfig[CreateData, Data, createResponse, Service]{
+		NewServiceFunction: NewService,
+		FunctionUnderTest:  "Create",
+		Input:              input,
+		MockResponse:       mockResponse,
+		ExpectedQuery:      createQuery,
+		ExpectedVariables:  expectedVariables,
+		ExpectedData:       expectedData,
+	}
+	utils.Test(t, config)
+}
