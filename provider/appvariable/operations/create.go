@@ -31,6 +31,8 @@ func Create(ctx context.Context, d *schema.ResourceData, m any) diag.Diagnostics
 		Value:        value,
 		Visibility:   visibility,
 		Environments: environments,
+		Type:         d.Get("type").(string),
+		FileName:     d.Get("file_name").(string),
 	}
 
 	data, err := client.AppVariable.Create(input)

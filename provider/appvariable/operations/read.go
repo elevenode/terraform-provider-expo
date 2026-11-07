@@ -38,6 +38,16 @@ func Read(ctx context.Context, d *schema.ResourceData, m any) diag.Diagnostics {
 	if err := d.Set("visibility", data.Visibility); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}
+	variableType := data.Type
+	if variableType == "" {
+		variableType = "STRING"
+	}
+	if err := d.Set("type", variableType); err != nil {
+		diags = append(diags, diag.FromErr(err)...)
+	}
+	if err := d.Set("file_name", data.FileName); err != nil {
+		diags = append(diags, diag.FromErr(err)...)
+	}
 	if err := d.Set("environments", data.Environments); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}

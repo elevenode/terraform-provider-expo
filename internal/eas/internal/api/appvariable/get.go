@@ -17,8 +17,10 @@ const getQuery = `
 				environments
 				id
 				name
-				value
+				value(includeFileContent: true)
 				visibility
+				type
+				fileName
 			}
 		}
 	}`

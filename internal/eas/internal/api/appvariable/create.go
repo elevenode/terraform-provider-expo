@@ -9,14 +9,15 @@ type createResponse struct {
 }
 
 const createQuery = `
-	mutation ($appId: ID!, $name: String!, $value: String!, $visibility: EnvironmentVariableVisibility!, $environments: [EnvironmentVariableEnvironment!]) {
+	mutation ($appId: ID!, $name: String!, $value: String!, $visibility: EnvironmentVariableVisibility!, $environments: [EnvironmentVariableEnvironment!], $type: EnvironmentSecretType!, $fileName: String) {
 		environmentVariable {
 			createEnvironmentVariableForApp(
 				appId: $appId
 				environmentVariableData: {
 					name: $name
 					value: $value
-					type: STRING
+					type: $type
+					fileName: $fileName
 					visibility: $visibility
 					environments: $environments
 				}
@@ -26,7 +27,8 @@ const createQuery = `
 				name
 				scope
 				type
-				value
+				fileName
+				value(includeFileContent: true)
 				visibility
 			}
 		}
@@ -34,12 +36,21 @@ const createQuery = `
 
 // Creates an App Environment Variable in EAS
 func (service *service) Create(data CreateData) (*Data, error) {
+	variableType := data.Type
+	if variableType == "" {
+		variableType = TypeString
+	}
+
 	variables := map[string]any{
 		"appId":        data.AppId,
 		"name":         data.Name,
 		"value":        data.Value,
 		"visibility":   data.Visibility,
 		"environments": data.Environments,
+		"type":         variableType,
+	}
+	if data.FileName != "" {
+		variables["fileName"] = data.FileName
 	}
 
 	var response createResponse

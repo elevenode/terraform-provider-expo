@@ -9,16 +9,18 @@ type updateResponse struct {
 }
 
 const updateQuery = `
-	mutation ($id: ID!, $name: String!, $value: String!, $visibility: EnvironmentVariableVisibility!, $environments: [EnvironmentVariableEnvironment!]) {
+	mutation ($id: ID!, $name: String!, $value: String!, $visibility: EnvironmentVariableVisibility!, $environments: [EnvironmentVariableEnvironment!], $type: EnvironmentSecretType, $fileName: String) {
 		environmentVariable {
 			updateEnvironmentVariable(
-				environmentVariableData: { environments: $environments, id: $id, name: $name, value: $value, visibility: $visibility }
+				environmentVariableData: { environments: $environments, id: $id, name: $name, value: $value, visibility: $visibility, type: $type, fileName: $fileName }
 			) {
 				environments
 				id
 				name
-				value
+				value(includeFileContent: true)
 				visibility
+				type
+				fileName
 			}
 		}
 	}`
@@ -30,6 +32,13 @@ func (service *baseService) Update(data UpdateData) (*Data, error) {
 		"value":        data.Value,
 		"visibility":   data.Visibility,
 		"environments": data.Environments,
+	}
+	// Variables left out of the request are not sent, so EAS keeps the current value.
+	if data.Type != "" {
+		variables["type"] = data.Type
+	}
+	if data.FileName != "" {
+		variables["fileName"] = data.FileName
 	}
 
 	var response updateResponse
