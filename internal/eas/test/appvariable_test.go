@@ -23,6 +23,7 @@ func TestAppEnvironmentVariableGet(t *testing.T) {
 		Value:        "VALUE",
 		Visibility:   "PUBLIC",
 		Environments: []string{"preview"},
+		Type:         "STRING",
 	}
 
 	assert.Equal(t, expectedData, actualData)
@@ -43,6 +44,7 @@ func TestAppEnvironmentVariableGetByName(t *testing.T) {
 		Value:        "VALUE",
 		Visibility:   "PUBLIC",
 		Environments: []string{"preview"},
+		Type:         "STRING",
 	}
 
 	assert.Equal(t, expectedData, actualData)

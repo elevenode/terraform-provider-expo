@@ -12,8 +12,12 @@ type Data struct {
 	Visibility string `json:"visibility"`
 	// development, preview, production
 	Environments []string `json:"environments"`
-	CreatedAt    string   `json:"createdAt"`
-	UpdatedAt    string   `json:"updatedAt"`
+	// STRING or FILE_BASE64
+	Type string `json:"type,omitempty"`
+	// File name of a FILE_BASE64 variable
+	FileName  string `json:"fileName,omitempty"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type UpdateData struct {
@@ -22,6 +26,10 @@ type UpdateData struct {
 	Value        string
 	Visibility   string
 	Environments []string
+	// Optional: STRING or FILE_BASE64. Left unchanged when empty.
+	Type string
+	// Optional: file name of a FILE_BASE64 variable. Left unchanged when empty.
+	FileName string
 }
 
 type BaseService interface {

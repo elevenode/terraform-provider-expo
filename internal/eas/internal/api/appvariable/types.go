@@ -18,12 +18,21 @@ type GetData struct {
 	AppId string
 }
 
+const (
+	TypeString     = "STRING"
+	TypeFileBase64 = "FILE_BASE64"
+)
+
 type CreateData struct {
 	AppId        string
 	Name         string
 	Value        string
 	Visibility   string
 	Environments []string
+	// STRING (default) or FILE_BASE64. For FILE_BASE64, Value is the base64-encoded file content.
+	Type string
+	// File name of a FILE_BASE64 variable
+	FileName string
 }
 
 type Service interface {
