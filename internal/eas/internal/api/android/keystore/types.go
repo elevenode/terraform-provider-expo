@@ -8,6 +8,10 @@ type Data struct {
 	KeyPassword      string `json:"keyPassword"`
 	Keystore         string `json:"keystore"`
 	KeystorePassword string `json:"keystorePassword"`
+
+	Md5CertificateFingerprint    string `json:"md5CertificateFingerprint"`
+	Sha1CertificateFingerprint   string `json:"sha1CertificateFingerprint"`
+	Sha256CertificateFingerprint string `json:"sha256CertificateFingerprint"`
 }
 
 type CreateData struct {

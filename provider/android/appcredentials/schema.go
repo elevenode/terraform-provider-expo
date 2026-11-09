@@ -10,6 +10,7 @@ import (
 
 func Resource() *schema.Resource {
 	return &schema.Resource{
+		Description:   "Android credentials for an EAS app: the Google service account key used for Play Store submissions, the FCM V1 push key, and the keystores used to sign builds.",
 		ReadContext:   operations.Read,
 		CreateContext: operations.Create,
 		DeleteContext: operations.Delete,
@@ -33,13 +34,13 @@ func Resource() *schema.Resource {
 				ForceNew:    true,
 			},
 			"google_service_account_key_id": {
-				Description: "Google Service Account Key Id",
+				Description: "EAS Id of the Google Service Account Key used for Play Store submissions. Use the `id` of an `expo_google_service_account_key` resource (to upload a key) or data source (to look up one already in EAS).",
 				Type:        schema.TypeString,
-				Required:    true,
+				Optional:    true,
 				ForceNew:    true,
 			},
 			"fcm_key": {
-				Description: "FCM Google Service Account Key Id",
+				Description: "JSON contents of the Google service account key used for FCM V1 push notifications.",
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
@@ -79,7 +80,7 @@ func Resource() *schema.Resource {
 							Computed:    true,
 						},
 						"keystore_id": {
-							Description: "EAS Id of the Android Keystore",
+							Description: "EAS Id of the Android Keystore, e.g. the `id` of an `expo_android_keystore` resource.",
 							Type:        schema.TypeString,
 							Required:    true,
 						},

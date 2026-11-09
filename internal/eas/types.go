@@ -76,6 +76,7 @@ type GetAppBuildCredentialsData = appleappbuildcredentials.GetData
 
 type GetByProjectIdentifierGoogleServiceAccountKeyData = googleserviceaccountkey.GetByProjectIdentifierData
 type GoogleServiceAccountKeyData = googleserviceaccountkey.Data
+type CreateGoogleServiceAccountKeyData = googleserviceaccountkey.CreateData
 
 type GetByIdentifierPushKeyData = pushkey.GeyByIdentifierData
 type PushKeyData = pushkey.Data

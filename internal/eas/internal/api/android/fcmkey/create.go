@@ -13,11 +13,10 @@ type createResponse struct {
 }
 
 const createQuery = `
-	mutation ($accountId: ID!, $appCredentialsId: String!, $keyJson: String!) {
+	mutation ($appCredentialsId: String!, $keyJson: String!) {
     androidAppCredentials {
       createFcmV1Credential(
-        accountId: $accountId
-        androidAppCredentialsId: $appCredentialsId,
+        androidAppCredentialsId: $appCredentialsId
         credential: $keyJson
       ) {
         googleServiceAccountKeyForFcmV1 {
@@ -32,7 +31,6 @@ const createQuery = `
 func (s *service) Create(createData CreateData) (*Data, error) {
 	variables := map[string]any{
 		"keyJson":          createData.KeyJson,
-		"accountId":        createData.AccountId,
 		"appCredentialsId": createData.AppCredentialsId,
 	}
 

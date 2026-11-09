@@ -2,8 +2,8 @@ package operations
 
 import (
 	"context"
-	"github.com/elevenode/terraform-provider-expo/internal/client"
 
+	"github.com/elevenode/terraform-provider-expo/internal/client"
 	"github.com/elevenode/terraform-provider-expo/internal/eas"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -32,55 +32,35 @@ func Create(ctx context.Context, d *schema.ResourceData, m any) diag.Diagnostics
 	if err := d.Set("app_id", data.AppId); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}
-	if err := d.Set("identifier", data.Id); err != nil {
+	if err := d.Set("identifier", data.Identifier); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}
 	if err := d.Set("google_service_account_key_id", data.GoogleServiceAccountKeyId); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}
 
-	fcmKeyInput := eas.CreateFCMKey{
-		KeyJson:          d.Get("fcm_key").(string),
-		AccountId:        client.AccountId,
-		AppCredentialsId: data.Id,
-	}
-
-	dataFcmKey, err := client.Android.FCMKey.Create(fcmKeyInput)
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	if err := d.Set("fcm_key", dataFcmKey.KeyJson); err != nil {
-		diags = append(diags, diag.FromErr(err)...)
-	}
-
-	buildCredentialsList := d.Get("build_credentials").([]any)
-
-	buildCredentialsNewList := make([]any, len(buildCredentialsList))
-
-	for _, buildCredentials := range buildCredentialsList {
-		buildCredential, ok := buildCredentials.(map[string]any)
-		if !ok {
-			return diag.Errorf("Error while parsing build credentials config")
-		}
-		buildCredentialsInput := eas.CreateAndroidAppBuildCredentialsData{
+	if fcmKey := d.Get("fcm_key").(string); fcmKey != "" {
+		fcmKeyInput := eas.CreateFCMKey{
+			KeyJson:          fcmKey,
 			AppCredentialsId: data.Id,
-			Name:             buildCredential["name"].(string),
-			KeystoreId:       buildCredential["keystore_id"].(string),
 		}
 
-		buildData, err := client.Android.AppBuildCredentials.Create(buildCredentialsInput)
+		dataFcmKey, err := client.Android.FCMKey.Create(fcmKeyInput)
 		if err != nil {
-			return diag.FromErr(err)
+			return append(diags, diag.FromErr(err)...)
 		}
-		buildCredentialsNewList = append(buildCredentialsNewList, map[string]any{
-			"id":          buildData.Id,
-			"name":        buildData.Name,
-			"keystore_id": buildData.KeystoreId,
-		})
+
+		if err := d.Set("fcm_key", dataFcmKey.KeyJson); err != nil {
+			diags = append(diags, diag.FromErr(err)...)
+		}
 	}
 
-	if err := d.Set("build_credentials", buildCredentialsNewList); err != nil {
+	buildCredentials, err := createBuildCredentials(client, data.Id, d.Get("build_credentials").([]any))
+	if err != nil {
+		return append(diags, diag.FromErr(err)...)
+	}
+
+	if err := d.Set("build_credentials", buildCredentials); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}
 

@@ -9,7 +9,6 @@ import (
 func TestCreate(t *testing.T) {
 
 	input := &CreateData{
-		AccountId:        "test-account-id",
 		AppCredentialsId: "test-app-credentials-id",
 		KeyJson:          "test-key-json",
 	}
@@ -22,7 +21,6 @@ func TestCreate(t *testing.T) {
 	expectedVariables := map[string]any{
 		"appCredentialsId": input.AppCredentialsId,
 		"keyJson":          input.KeyJson,
-		"accountId":        input.AccountId,
 	}
 
 	mockResponse := createResponse{

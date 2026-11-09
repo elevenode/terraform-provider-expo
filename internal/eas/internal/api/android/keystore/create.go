@@ -13,7 +13,7 @@ const createQuery = `
 		$accountId: ID!
 		$keystoreBase64: String!
 		$keyAlias: String!
-		$keyPassword: String!
+		$keyPassword: String
 		$keystorePassword: String!
 	) {
 		androidKeystore {
@@ -31,17 +31,26 @@ const createQuery = `
 				keyPassword
 				keystore
 				keystorePassword
+				md5CertificateFingerprint
+				sha1CertificateFingerprint
+				sha256CertificateFingerprint
 			}
 		}
 	}
 `
 
 func (service *service) Create(input CreateData) (*Data, error) {
+	// keyPassword is optional in EAS; send null rather than "" when unset.
+	var keyPassword any
+	if input.KeyPassword != "" {
+		keyPassword = input.KeyPassword
+	}
+
 	variables := map[string]any{
 		"accountId":        input.AccountId,
 		"keystoreBase64":   input.KeystoreBase64,
 		"keyAlias":         input.KeyAlias,
-		"keyPassword":      input.KeyPassword,
+		"keyPassword":      keyPassword,
 		"keystorePassword": input.KeystorePassword,
 	}
 

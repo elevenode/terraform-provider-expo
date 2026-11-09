@@ -8,10 +8,11 @@ import (
 
 func DataSource() *schema.Resource {
 	return &schema.Resource{
+		Description: "Looks up a Google service account key that is already uploaded to the EAS account. To upload one with Terraform, use the `expo_google_service_account_key` resource.",
 		ReadContext: operations.Read,
 		Schema: map[string]*schema.Schema{
 			"project_identifier": {
-				Description: "Project Identifier of the Google Service Account Key",
+				Description: "GCP project id of the key (`project_id` in the JSON key file)",
 				Type:        schema.TypeString,
 				Required:    true,
 			},
@@ -21,8 +22,9 @@ func DataSource() *schema.Resource {
 				Computed:    true,
 			},
 			"client_email": {
-				Description: "Google Service Account Email",
+				Description: "Google Service Account Email. Set it to pick one key when several keys in EAS belong to the same GCP project.",
 				Type:        schema.TypeString,
+				Optional:    true,
 				Computed:    true,
 			},
 			"client_identifier": {

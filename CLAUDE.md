@@ -35,6 +35,9 @@ docs/                            # Auto-generated registry docs (do not edit man
 - `expo_app` - Expo app
 - `expo_app_variable` - App environment variable
 - `expo_android_app_credentials` - Android app credentials
+- `expo_android_keystore` - Android keystore (upload/signing key)
+- `expo_google_service_account_key` - Google service account key upload
+- `expo_account_variable` - Account environment variable
 - `expo_ios_app_credentials` - iOS app credentials
 - `expo_ios_app_identifier` - iOS app identifier (Bundle ID)
 - `expo_ios_app_provisioning_profile` - iOS provisioning profile

@@ -2,9 +2,8 @@ package operations
 
 import (
 	"context"
-	"github.com/elevenode/terraform-provider-expo/internal/client"
 
-	"github.com/elevenode/terraform-provider-expo/internal/eas"
+	"github.com/elevenode/terraform-provider-expo/internal/client"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -17,36 +16,27 @@ func Update(ctx context.Context, d *schema.ResourceData, m any) diag.Diagnostics
 
 	client := m.(*client.EASClient)
 
+	// Build credentials have no update mutation: replace the whole list.
 	old, new := d.GetChange("build_credentials")
-	oldList := old.([]any)
-	newList := new.([]any)
-	for _, b := range oldList {
+	for _, b := range old.([]any) {
 		buildCredential := b.(map[string]any)
-		id := buildCredential["id"].(string)
-		_, err := client.Android.AppBuildCredentials.Delete(id)
-		if err != nil {
+		id, _ := buildCredential["id"].(string)
+		if id == "" {
+			continue
+		}
+		if _, err := client.Android.AppBuildCredentials.Delete(id); err != nil {
 			return diag.FromErr(err)
 		}
 	}
-	for _, b := range newList {
-		buildCredential := b.(map[string]any)
-		buildCredentialsInput := eas.CreateAndroidAppBuildCredentialsData{
-			AppCredentialsId: d.Get("id").(string),
-			Name:             buildCredential["name"].(string),
-			KeystoreId:       buildCredential["keystore_id"].(string),
-		}
 
-		data, err := client.Android.AppBuildCredentials.Create(buildCredentialsInput)
-		if err != nil {
-			return diag.FromErr(err)
-		}
-		newList = append(newList, map[string]any{
-			"id":          data.AppCredentialsId,
-			"keystore_id": data.KeystoreId,
-			"name":        data.Name,
-		})
+	created, err := createBuildCredentials(client, d.Id(), new.([]any))
+	if err != nil {
+		// Record what was created so the next plan reconciles it.
+		_ = d.Set("build_credentials", created)
+		return diag.FromErr(err)
 	}
-	if err := d.Set("build_credentials", newList); err != nil {
+
+	if err := d.Set("build_credentials", created); err != nil {
 		diags = append(diags, diag.FromErr(err)...)
 	}
 	return diags
