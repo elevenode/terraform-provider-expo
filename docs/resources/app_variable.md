@@ -51,7 +51,7 @@ resource "expo_app_variable" "google_services_json" {
 - `app_id` (String) The id of the app for the environment variable
 - `environments` (Set of String) The environments of the app for the environment variable
 - `name` (String) The name of the app for the environment variable
-- `value` (String) The value of the environment variable. For a `FILE_BASE64` variable, the base64-encoded file content, e.g. `filebase64("google-services.json")`.
+- `value` (String, Sensitive) The value of the environment variable. For a `FILE_BASE64` variable, the base64-encoded file content, e.g. `filebase64("google-services.json")`.
 - `visibility` (String) The visibility of the app for the environment variable
 
 ### Optional
