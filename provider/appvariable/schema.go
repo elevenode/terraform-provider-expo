@@ -39,6 +39,7 @@ func Resource() *schema.Resource {
 				Description: "The value of the environment variable. For a `FILE_BASE64` variable, the base64-encoded file content, e.g. `filebase64(\"google-services.json\")`.",
 				Type:        schema.TypeString,
 				Required:    true,
+				Sensitive:   true,
 			},
 			"type": {
 				Description:  "The type of the environment variable: `STRING` (default) or `FILE_BASE64` for a file variable.",

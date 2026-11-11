@@ -32,6 +32,7 @@ func Resource() *schema.Resource {
 				Description: "The value of the account environment variable",
 				Type:        schema.TypeString,
 				Required:    true,
+				Sensitive:   true,
 			},
 			"visibility": {
 				Description:  "The visibility of the account environment variable",

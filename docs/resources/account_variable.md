@@ -30,7 +30,7 @@ resource "expo_account_variable" "this" {
 
 - `environments` (Set of String) The environments of the account environment variable
 - `name` (String) The name of the account environment variable
-- `value` (String) The value of the account environment variable
+- `value` (String, Sensitive) The value of the account environment variable
 - `visibility` (String) The visibility of the account environment variable
 
 ### Read-Only
